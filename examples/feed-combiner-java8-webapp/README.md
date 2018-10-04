@@ -84,8 +84,8 @@ The mapping of the URI path space is presented in the following table:
  **_/combiner/{feed_id}_**                         | CombinerFeedController   | GET            | FreeMarker templates/feed-entries.ftl
  **_/combiner/delete/{feed_id}?_method=DELETE_**   | CombinerFeedController   | POST           | FreeMarker templates/index.ftl
 
-Sample Response
----------------
+A Sample Response
+------------------
 
 ### Create a Combined Feed
 
