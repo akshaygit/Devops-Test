@@ -1035,14 +1035,14 @@
             </build>
 		<distributionManagement>
 			<repository>
-				<id>deployment</id>
-				<name>Internal Releases</name>
+				<id>releases</id>
+				<name>Releases</name>
 				<url>http://54.83.154.231:8081/nexus/content/repositories/releases/</url>
 			</repository>
                        
 			<snapshotRepository>
-				<id>deployment-snap</id>
-		         <name>Internal Snapshot Releases</name>
+				<id>snapshots</id>
+		         <name>Snapshots</name>
 	                 <url>http://54.83.154.231:8081/nexus/content/repositories/snapshots/</url>
 			</snapshotRepository>
 		</distributionManagement>
