@@ -1037,13 +1037,13 @@
 			<repository>
 				<id>deployment</id>
 				<name>Internal Releases</name>
-				<url>http://54.224.238.240:8081/repository/Project-Rel/</url>
+				<url>http://54.83.154.231:8081/nexus/content/repositories/releases/</url>
 			</repository>
                        
 			<snapshotRepository>
 				<id>deployment-snap</id>
 		         <name>Internal Snapshot Releases</name>
-	                 <url>http://54.224.238.240:8081/repository/Project-Snap/</url>
+	                 <url>http://54.83.154.231:8081/nexus/content/repositories/snapshots/</url>
 			</snapshotRepository>
 		</distributionManagement>
             <reporting>
