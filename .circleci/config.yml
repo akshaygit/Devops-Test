@@ -7,9 +7,21 @@ jobs:
       - image: "maven:3.8-openjdk-8"
     steps:
       - checkout
-      - run: cd ./examples/feed-combiner-java8-webapp/ && mvn clean install
+      - run:
+          name: Maven build 
+          command: cd ./examples/feed-combiner-java8-webapp/ && mvn clean install
+      - run:
+          name: Install JFrog CLI
+          command: curl -fL https://getcli.jfrog.io | sh
+      - run:
+          name: Push to Artifactory
+          command: |
+            ./jfrog config add jfrog-artifactory --artifactory-url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_APIKEY --interactive=false
+            ./jfrog rt u target/*.war https://centralartifactory.jfrog.io/artifactory/default-maven-local/ --build-name=Devops-Test --build-number=$CIRCLE_BUILD_NUM
+            ./jfrog rt bce Devops-Test $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
+            ./jfrog rt bp Devops-Test $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
       - store_artifacts:
-          path: ./examples/feed-combiner-java8-webapp/target/devops.war
+          path: ./target/devops.war
   test:
     working_directory: ~/circleci-pipeline
     docker:
