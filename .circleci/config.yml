@@ -30,7 +30,6 @@ jobs:
       - checkout
       - run: cd ./examples/feed-combiner-java8-webapp/ &&  mvn test
   deploy:
-    working_directory: ~/circleci-deploy
     docker:
       - image: "tomcat:8.5.75-jdk8-temurin"
     steps:
