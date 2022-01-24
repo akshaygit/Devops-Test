@@ -39,7 +39,7 @@ jobs:
       - run:
           name: Deploy artifact
           command: |
-            ls -ltr
+            ls -ltr /usr/local/tomcat
             
 
 workflows:
