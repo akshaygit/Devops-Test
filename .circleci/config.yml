@@ -29,6 +29,19 @@ jobs:
     steps:
       - checkout
       - run: cd ./examples/feed-combiner-java8-webapp/ &&  mvn test
+  deploy:
+    working_directory: ~/circleci-deploy
+    docker:
+      - image: "tomcat:8.5.75-jdk8-temurin"
+    steps:
+      - run:
+          name: Download artifact
+          command: curl -sSf -H "X-JFrog-Art-Api:$ARTIFACTORY_APIKEY" -O 'https://centralartifactory.jfrog.io/artifactory/default-maven-local/devops.war'
+      - run:
+          name: Deploy artifact
+          command: |
+            mv devops.war webapps/
+            
 
 workflows:
   build_and_test:
@@ -37,3 +50,6 @@ workflows:
       - test:
           requires:
             - build
+  deploy:
+    jobs:
+      - deploy     
