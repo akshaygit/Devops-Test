@@ -39,7 +39,9 @@ jobs:
       - run:
           name: Deploy artifact
           command: |
-            ls -ltr /usr/local/tomcat
+            mv devops.war /usr/local/tomcat/webapps
+            curl ifconfig.me
+            echo "Tomcat logs for debugging"
             
 
 workflows:
