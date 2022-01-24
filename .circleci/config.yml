@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Deploy artifact
           command: |
-            mv devops.war webapps/
+            ls -ltr
             
 
 workflows:
